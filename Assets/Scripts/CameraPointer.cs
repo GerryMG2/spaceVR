@@ -18,7 +18,7 @@
 
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 /// <summary>
 /// Sends messages to gazed GameObject.
@@ -30,15 +30,30 @@ public class CameraPointer : MonoBehaviour
     LayerMask Ground;
     LayerMask Tools;
 
+    public Text oxigen;
+    public float oxi = 350;
+    float oxiInitial;
+    public float oxigen_delta = 0.001f;
+
     public InputManager input;
     public GameObject Mark;
     public GameObject Player;
 
+    float aux;
+
+    void addOxige(float ad){
+        oxi+= ad;
+        if(oxi >= 500){
+            oxi = 500;
+        }
+    }
 
     public void Start()
     {
         Ground = 1 << 8;
         Tools = 1 << 7;
+        oxiInitial = oxi;
+
     }
 
     /// <summary>
@@ -48,6 +63,11 @@ public class CameraPointer : MonoBehaviour
     {
         // Casts ray towards camera's forward direction, to detect if a GameObject is being gazed
         // at.
+        oxi -= Time.deltaTime;
+        aux = oxi / oxiInitial * 100;
+        aux = Mathf.Round(aux);
+        oxigen.text = "Oxigeno " + aux + " %";
+
 
         RaycastHit hitGround;
         if (Physics.Raycast(transform.position, transform.forward, out hitGround, _maxDistance, Ground))
@@ -79,24 +99,26 @@ public class CameraPointer : MonoBehaviour
         }
 
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, _maxDistance, Tools))
+        RaycastHit hitT;
+        if (Physics.Raycast(transform.position, transform.forward, out hitT, _maxDistance, Tools))
         {
 
             // GameObject detected in front of the camera.
-            if (_gazedAtObject != hit.transform.gameObject)
+            if (hitT.transform.GetComponent<tool>() != null)
             {
-                // New GameObject.
-                // _gazedAtObject?.SendMessage("OnPointerExit");
-                // _gazedAtObject = hit.transform.gameObject;
-                // _gazedAtObject.SendMessage("OnPointerEnter");
+                if (hitT.transform.GetComponent<tool>().type == tools.oxigen)
+                {
+                    if (input.IsTriggerPressed())
+                    {
+                        
+                        addOxige(hitT.transform.GetComponent<tool>().value);
+                    }
+                }
             }
         }
         else
         {
-            // No GameObject detected in front of the camera.
-            _gazedAtObject?.SendMessage("OnPointerExit");
-            _gazedAtObject = null;
+
         }
 
         // Checks for screen touches.
