@@ -53,9 +53,9 @@ public class CameraPointer : MonoBehaviour
             if (hitGround.transform.GetComponent<Terrain>() != null)
             {
                 Mark.SetActive(true);
-                Vector3 NewMarkPosition = new Vector3(hitGround.point.x, 0.08f, hitGround.point.z);
+                Vector3 NewMarkPosition = new Vector3(hitGround.point.x, hitGround.point.y + 0.5f, hitGround.point.z);
                 Mark.transform.position = NewMarkPosition;
-                Vector3 newTransformPosition = new Vector3(hitGround.point.x, 2f, hitGround.point.z);
+                Vector3 newTransformPosition = new Vector3(hitGround.point.x, hitGround.point.y + 2f, hitGround.point.z);
 
                 // GameObject detected in front of the camera.
                 if (input.IsTriggerPressed())
