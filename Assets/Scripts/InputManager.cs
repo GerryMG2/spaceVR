@@ -15,4 +15,8 @@ public class InputManager : MonoBehaviour
 
     }
 
+    public bool otherBtn(){
+        return Google.XR.Cardboard.Api.IsTriggerHeldPressed;
+    }
+
 }
