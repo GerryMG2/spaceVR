@@ -28,6 +28,7 @@ public class CameraPointer : MonoBehaviour
     public float _maxDistance = 10;
     private GameObject _gazedAtObject = null;
     LayerMask Ground;
+    LayerMask Tools;
 
     public InputManager input;
     public GameObject Mark;
@@ -37,6 +38,7 @@ public class CameraPointer : MonoBehaviour
     public void Start()
     {
         Ground = 1 << 8;
+        Tools = 1 << 7;
     }
 
     /// <summary>
@@ -78,7 +80,7 @@ public class CameraPointer : MonoBehaviour
 
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, _maxDistance))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, _maxDistance, Tools))
         {
 
             // GameObject detected in front of the camera.
