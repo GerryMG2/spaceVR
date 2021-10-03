@@ -7,8 +7,12 @@ public class InputManager : MonoBehaviour
 
     public bool IsTriggerPressed()
     {
+        if (Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            return Input.GetMouseButtonDown(0);
+        }
         return Google.XR.Cardboard.Api.IsTriggerPressed;
-        
+
     }
-   
+
 }
