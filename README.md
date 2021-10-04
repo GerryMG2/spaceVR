@@ -22,7 +22,7 @@ ya que si no está instalado dará problemas a la hora de compilarlo.)
 ### Link para la APK:
 * [APK spaceVR](https://drive.google.com/file/d/1ehR_OxNSqla3yeFt9IZEU8zJAA-WrjtH/view) - **Aclaración**: No está probado para todos los teléfonos.
 
-### Link para la APK:
+### Link del vídeo:
 * [Link de Youtube](https://youtu.be/lNNV12OqS98) - Se muestra un poco del entorno de la aplicación.
 
 ## Imágenes de la aplicación en teléfono.
