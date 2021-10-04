@@ -6,5 +6,8 @@ public interface tool
 
     float value {get; set;}
 
+    void action();
+
+    void interact();
 
 }
