@@ -1,4 +1,4 @@
 public enum tools
 {
-    oxigen,hammer
+    oxigen,hammer,viking
 }

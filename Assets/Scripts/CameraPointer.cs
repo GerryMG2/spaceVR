@@ -100,6 +100,17 @@ public class CameraPointer : MonoBehaviour
                     }
                 }
 
+                if (hitT.transform.GetComponent<tool>().type == tools.viking)
+                {
+                    
+                    hitT.transform.GetComponent<tool>().action();
+                    if (input.IsTriggerPressed() && hasHammer)
+                    {
+                        hitT.transform.GetComponent<tool>().interact();
+                        
+                    }
+                }
+
             }
         }
         else
