@@ -30,6 +30,7 @@ public class CameraPointer : MonoBehaviour
     LayerMask Ground;
     LayerMask Tools;
 
+    public bool hasHammer;
     public Text oxigen;
     public float oxi = 350;
     float oxiInitial;
@@ -41,9 +42,11 @@ public class CameraPointer : MonoBehaviour
 
     float aux;
 
-    void addOxige(float ad){
-        oxi+= ad;
-        if(oxi >= 500){
+    void addOxige(float ad)
+    {
+        oxi += ad;
+        if (oxi >= 500)
+        {
             oxi = 500;
         }
     }
@@ -69,38 +72,8 @@ public class CameraPointer : MonoBehaviour
         oxigen.text = "Oxigeno " + aux + " %";
 
 
-        RaycastHit hitGround;
-        if (Physics.Raycast(transform.position, transform.forward, out hitGround, _maxDistance, Ground))
-        {
-            if (hitGround.transform.GetComponent<Terrain>() != null)
-            {
-                Mark.SetActive(true);
-                Vector3 NewMarkPosition = new Vector3(hitGround.point.x, hitGround.point.y + 0.5f, hitGround.point.z);
-                Mark.transform.position = NewMarkPosition;
-                Vector3 newTransformPosition = new Vector3(hitGround.point.x, hitGround.point.y + 2f, hitGround.point.z);
-
-                // GameObject detected in front of the camera.
-                if (input.IsTriggerPressed())
-                {
-                    Mark.SetActive(false);
-                    Player.transform.position = newTransformPosition;
-
-                }
-            }
-            else
-            {
-                Mark.SetActive(false);
-            }
-
-        }
-        else
-        {
-            Mark.SetActive(false);
-        }
-
-
         RaycastHit hitT;
-        if (Physics.Raycast(transform.position, transform.forward, out hitT, _maxDistance/2, Tools))
+        if (Physics.Raycast(transform.position, transform.forward, out hitT, _maxDistance / 2, Tools))
         {
 
             // GameObject detected in front of the camera.
@@ -115,12 +88,56 @@ public class CameraPointer : MonoBehaviour
                         addOxige(hitT.transform.GetComponent<tool>().value);
                     }
                 }
+
+                if (hitT.transform.GetComponent<tool>().type == tools.hammer)
+                {
+                    
+                    hitT.transform.GetComponent<tool>().action();
+                    if (input.IsTriggerPressed())
+                    {
+                        hitT.transform.GetComponent<tool>().interact();
+                        hasHammer = true;
+                    }
+                }
+
             }
         }
         else
         {
+            RaycastHit hitGround;
+            if (Physics.Raycast(transform.position, transform.forward, out hitGround, _maxDistance, Ground))
+            {
+                if (hitGround.transform.GetComponent<Terrain>() != null)
+                {
+                    Mark.SetActive(true);
+                    Vector3 NewMarkPosition = new Vector3(hitGround.point.x, hitGround.point.y + 0.5f, hitGround.point.z);
+                    Mark.transform.position = NewMarkPosition;
+                    Vector3 newTransformPosition = new Vector3(hitGround.point.x, hitGround.point.y + 2f, hitGround.point.z);
 
+                    // GameObject detected in front of the camera.
+                    if (input.IsTriggerPressed())
+                    {
+                        Mark.SetActive(false);
+                        Player.transform.position = newTransformPosition;
+
+                    }
+                }
+                else
+                {
+                    Mark.SetActive(false);
+                }
+
+            }
+            else
+            {
+                Mark.SetActive(false);
+            }
         }
+
+
+
+
+
 
         // Checks for screen touches.
         if (Google.XR.Cardboard.Api.IsTriggerPressed)
