@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce4fb1ccfb342e4891b6a439d64eed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  air: {fileID: 0}
+  air: {fileID: 8300000, guid: 65c494d10792b33479a293719fcebea7, type: 3}
   oxigen: 100
 --- !u!23 &534673918
 MeshRenderer:
