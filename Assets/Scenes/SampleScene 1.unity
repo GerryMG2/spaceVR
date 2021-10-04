@@ -123,11 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< HEAD
---- !u!1 &22958519
-=======
 --- !u!1 &105663136
->>>>>>> 18fa498b961fd6fe3a436cd56a2d3112e974fcaa
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,46 +131,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 22958520}
-  m_Layer: 0
-  m_Name: Nave
-=======
   - component: {fileID: 105663137}
   - component: {fileID: 105663140}
   - component: {fileID: 105663139}
   - component: {fileID: 105663138}
   m_Layer: 7
   m_Name: Canvas
->>>>>>> 18fa498b961fd6fe3a436cd56a2d3112e974fcaa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!4 &22958520
-Transform:
-=======
 --- !u!224 &105663137
 RectTransform:
->>>>>>> 18fa498b961fd6fe3a436cd56a2d3112e974fcaa
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 22958519}
-  m_LocalRotation: {x: -0, y: -0.35627696, z: -0, w: 0.9343804}
-  m_LocalPosition: {x: 465.2, y: -0.2, z: 184}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_Children:
-  - {fileID: 1440960901}
-  - {fileID: 1116978576}
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: -41.743, z: 0}
-=======
   m_GameObject: {fileID: 105663136}
   m_LocalRotation: {x: -0, y: 0.4130686, z: -0, w: 0.91069996}
   m_LocalPosition: {x: 0, y: 0, z: -10.44}
@@ -250,7 +223,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
->>>>>>> 18fa498b961fd6fe3a436cd56a2d3112e974fcaa
 --- !u!114 &108473108
 MonoBehaviour:
   m_ObjectHideFlags: 0
