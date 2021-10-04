@@ -25,4 +25,4 @@ ya que si no está instalado dará problemas a la hora de compilarlo.)
 ### Link del vídeo:
 * [Link de Youtube](https://youtu.be/lNNV12OqS98) - Se muestra un poco del entorno de la aplicación.
 
-## Imágenes de la aplicación en teléfono.
+
