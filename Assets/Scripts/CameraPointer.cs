@@ -100,7 +100,7 @@ public class CameraPointer : MonoBehaviour
 
 
         RaycastHit hitT;
-        if (Physics.Raycast(transform.position, transform.forward, out hitT, _maxDistance, Tools))
+        if (Physics.Raycast(transform.position, transform.forward, out hitT, _maxDistance/2, Tools))
         {
 
             // GameObject detected in front of the camera.
@@ -108,9 +108,10 @@ public class CameraPointer : MonoBehaviour
             {
                 if (hitT.transform.GetComponent<tool>().type == tools.oxigen)
                 {
+                    hitT.transform.GetComponent<tool>().action();
                     if (input.IsTriggerPressed())
                     {
-                        
+                        hitT.transform.GetComponent<tool>().interact();
                         addOxige(hitT.transform.GetComponent<tool>().value);
                     }
                 }
